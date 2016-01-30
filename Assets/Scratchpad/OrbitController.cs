@@ -21,11 +21,18 @@ public class OrbitController : MonoBehaviour
     public eOrientationMode OrientationMode = eOrientationMode.TowardsOrbitPoint;
     public bool AutoStart = true;
 
+    Vector3 initialPosition = Vector3.zero;
+
     void Start()
     {
+        initialPosition = transform.position;
     }
 
     void Update()
+    {
+    }
+
+    void FixedUpdate()
     {
         if (OrbitPoint != null)
         {
@@ -40,6 +47,23 @@ public class OrbitController : MonoBehaviour
             Vector3 cross = Vector3.Cross(Vector3.forward, initial2Dn);
             float f = Mathf.Acos(Vector3.Dot(Vector3.forward, initial2Dn)) * Mathf.Sign(Vector3.Dot(cross, Vector3.up));
 
+            // calculate the next position
+            float timefactor_raw = (Time.fixedDeltaTime / Duration);
+            float timefactor = timefactor_raw - Mathf.Floor(timefactor_raw);
+            float rotamount = f + (timefactor * (Mathf.PI * 2.0f));
+            Vector3 newPosition = new Vector3(
+                Mathf.Sin(rotamount) * radius,
+                transform.position.y,
+                Mathf.Cos(rotamount) * radius
+            );
+            transform.position = newPosition;
+            
+            // calculate rotation
+            transform.rotation = Quaternion.LookRotation(
+                OrbitPoint.transform.position - transform.position
+            );
+            /*
+#if UNITY_EDITOR
             // precalculate segments
             for (int i = 0; i < SEGMENTS; i++)
             {
@@ -52,12 +76,9 @@ public class OrbitController : MonoBehaviour
                     z
                 );
             }
+#endif
+            */
         }
-    }
-
-    void FixedUpdate()
-    {
-        // @implementme
     }
 
     const int SEGMENTS = 32;
@@ -66,6 +87,8 @@ public class OrbitController : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
+#if UNITY_EDITOR
         if (OrbitPoint != null)
         {
             Color oldColor = Gizmos.color;
@@ -82,6 +105,7 @@ public class OrbitController : MonoBehaviour
             Gizmos.color = oldColor;
         }
     }
-
-
+#endif
+        */
+    }
 }
