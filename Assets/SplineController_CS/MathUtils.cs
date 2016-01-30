@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+namespace SplineController
+{
+
 public class MathUtils
 {
 	public static float GetQuatLength(Quaternion q)
@@ -154,4 +157,5 @@ public class MathUtils
 
 		return ret;
 	}
+}
 }

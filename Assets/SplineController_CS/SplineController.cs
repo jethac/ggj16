@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+namespace SplineController
+{
+
 public enum eOrientationMode { NODE = 0, TANGENT }
 
 [AddComponentMenu("Splines/Spline Controller")]
@@ -135,4 +138,5 @@ public class SplineController : MonoBehaviour
 			mSplineInterp.StartInterpolation(null, true, WrapMode);
 		}
 	}
+}
 }

@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+namespace SplineController
+{
+
 public enum eEndPointsMode { AUTO, AUTOCLOSED, EXPLICIT }
 public enum eWrapMode { ONCE, LOOP }
 public delegate void OnEndCallback();
@@ -245,4 +248,5 @@ public class SplineInterpolator : MonoBehaviour
 
 		return GetHermiteInternal(idx, param);
 	}
+}
 }
