@@ -10,6 +10,7 @@ namespace jethac
 
         void FixedUpdate()
         {
+            DesiredHeadingHelper ddh = gameObject.GetComponent<DesiredHeadingHelper>();
             var device = InputManager.ActiveDevice;
             // Support moving with left stick or dpad.
             _mvec_ls.Set(
@@ -22,9 +23,29 @@ namespace jethac
                 0.0f,
                 device.DPad.Y
             );
+            var cameraSpaceHeading = Vector3.ClampMagnitude(_mvec_ls + _mvec_dp, 1.0f);
+            if (cameraSpaceHeading.sqrMagnitude < 0.05f)
+            {
+                ddh.bUseHeading = false;
+                return;
+            }
+            else
+            {
+                ddh.bUseHeading = true;
+                ddh.DesiredAcceleration = cameraSpaceHeading.magnitude;
+            }
+            var cameraSpaceHeadingN = cameraSpaceHeading.normalized;
 
-            DesiredHeadingHelper ddh = gameObject.GetComponent<DesiredHeadingHelper>();
-            ddh.DesiredHeading = (_mvec_ls + _mvec_dp).normalized;
+            // reverse the Y-component...
+            cameraSpaceHeadingN.Scale(Vector3.back + Vector3.right + Vector3.up);
+
+            // now, use the cameratoworld matrix to put this into world space...
+            var worldSpaceHeading = Camera.main.cameraToWorldMatrix.MultiplyVector(cameraSpaceHeadingN);
+
+            // and flatten the Y-component...
+            worldSpaceHeading.Scale(Vector3.forward + Vector3.right);
+
+            ddh.DesiredHeading = worldSpaceHeading.normalized;
         }
     }
 }
