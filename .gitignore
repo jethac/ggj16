@@ -24,3 +24,6 @@ sysinfo.txt
 /Assets/InControl
 /Assets/ShaderForge
 /Assets/JsonDotNet
+
+# Unit testing examples
+/Assets/UnityTestTools/Examples
