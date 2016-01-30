@@ -180,7 +180,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 316331795}
   - 114: {fileID: 316331796}
-  - 114: {fileID: 316331797}
   m_Layer: 0
   m_Name: playertest
   m_TagString: Untagged
@@ -212,26 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf81433f5b0a2e943903d5100a8c11f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &316331797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 316331794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logDebugInfo: 1
-  invertYAxis: 0
-  useFixedUpdate: 1
-  dontDestroyOnLoad: 0
-  enableXInput: 1
-  xInputUpdateRate: 0
-  xInputBufferSize: 0
-  enableICade: 0
-  customProfiles: []
+  DrawDebugInfo: 1
+  DesiredHeading: {x: 0, y: 0, z: 1}
 --- !u!1 &703765570
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +221,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 703765571}
+  - 114: {fileID: 703765572}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -259,6 +241,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &703765572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 703765570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logDebugInfo: 1
+  invertYAxis: 0
+  useFixedUpdate: 1
+  dontDestroyOnLoad: 0
+  enableXInput: 1
+  xInputUpdateRate: 0
+  xInputBufferSize: 0
+  enableICade: 0
+  customProfiles: []
 --- !u!1 &710599301
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +450,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 298823164e6130140b7c65cfdc79c354, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.92387956
+      value: 0.38268346
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 298823164e6130140b7c65cfdc79c354, type: 3}
       propertyPath: m_LocalRotation.z
@@ -456,7 +458,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 298823164e6130140b7c65cfdc79c354, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3826833
+      value: 0.9238795
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 298823164e6130140b7c65cfdc79c354, type: 3}
       propertyPath: m_RootOrder
