@@ -9,6 +9,12 @@ namespace jethac {
         [HideInInspector]
         public Vector3 DesiredHeading = Vector3.forward;
 
+        [HideInInspector]
+        public bool bUseHeading = false;
+
+        [HideInInspector]
+        public float DesiredAcceleration = 0.0f;
+
         float m_dot = 0.0f;
         Vector3 m_cross = Vector3.zero;
 
